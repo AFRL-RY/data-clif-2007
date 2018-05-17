@@ -400,7 +400,7 @@ files and size of the MAMI data set is large and errors will result.
 ### Optimizing Data Download Costs
 
 The CLIF 2007 data set is large at approximatley 5 TB, to download the entire
-data set it would cost $450. This assumes AWS download fees are $0.09 a gigabyte
+data set it would cost $450. This assumes AWS download fees are $0.09 a gigabyte.
 Most researchers will not require the entire CLIF 2007 data set, carefully
 consider the data that you require to meet your research needs and download
 costs.  We have divided the dataset into small tarballs to make the download
