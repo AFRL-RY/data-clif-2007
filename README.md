@@ -1,15 +1,13 @@
 # Columbus Large Image Format (CLIF) 2007 Dataset Overview
 
 ## Overview
-		
-The CLIF dataset contains imagery from a large format EO platform. The data
-was collected in October 2007. The scene in this dataset is a flyover of the
-Ohio State University (OSU) Campus. The platform approaches the campus and
-loiters over the area for several hours.  The OSU campus is a busy city 
-environment with many vehicles and humans in the scene.  Below is a figure 
-from file "20071028142502-01000100-VIS.ntf.r1" with all six cameras stitched 
-then north oriented.  At full resolution each frame is approximately 66 mega 
-pixels.
+
+The CLIF dataset contains several hours of imagery from a large format EO
+platform which was collected in October 2007 over the Ohio State University
+(OSU) campus.  A busy city environment with many vehicles and humans in the
+scence was captured. Below is a figure from file
+"20071028142502-01000100-VIS.ntf.r1" with all six cameras stitched then north
+oriented.  At full resolution each frame is approximately 66 mega pixels.
 
 ![CLIF2007 sample scaled down version of output registered together](images/clif2007_sample.jpg "CLIF2007 sample")
 
@@ -18,32 +16,30 @@ pixels.
 
 The sensor is a large format monochromatic electro-optical sensor comprised
 of a matrix of six cameras. The matrix is 2 rows by 3 columns. Cameras 3, 1,
-and 5 make-up the top row of the image, respectively. Cameras 2, 0, and 4 
-make-up the bottom row of the image. Each camera was oriented in such way as 
-to maximize coverage, yet allow enough overlap between images to help in 
-mosaicking the image to form a larger image. Overlap between cameras is 
+and 5 make-up the top row of the image, respectively. Cameras 2, 0, and 4
+make-up the bottom row of the image. Each camera was oriented in such way as
+to maximize coverage, yet allow enough overlap between images to help in
+mosaicking the image to form a larger image. Overlap between cameras is
 apprixmatley 50 pixels.  The cameras, for this data collection, collect data
 at approximately 2 frames per second.
 
 To better understand the camera orientation imagine that you are looking
 through the CLIF camera head, you would see what is shown in the figure
-below.  In order to optimize performance of the CLIF camera system the data was 
-stored inverted so each image has to be rotated.  The images on the top row 
+below.  In order to optimize performance of the CLIF camera system the data was
+stored inverted so each image has to be rotated.  The images on the top row
 are rotated counter clockwise 90 degrees while the images on the bottom row
-are rotated clockwise 90 degrees. Camera numbers have been in embeded in the 
-figure below for illustrative purposes only, the camera numbers are not 
-stored in the imagery.   
-
+are rotated clockwise 90 degrees. Camera numbers have been in embeded in the
+figure below for illustrative purposes only, the camera numbers are not
+stored in the imagery.
 
 ![RAW images from perspective of the camera, flipped, and numbered](images/clif2007_sample_side_by_side.jpg "RAW images from the perspective of the camera, flipped, and numbered")
 
- 
 Each camera was made by Illunis employing a Kodak KAI-11002 charge coupled
 device (CCD).  The optics are Canon 135 MM EF mount lens controlled with
 a Birger adapter.  Unfortunately both the CCD and camera have been discontinued.
 On the rear of the camera head was a Novatel DL4 Plus SPAN with a Honeywell
 HG1700_AG11 inertial measurement unit (IMU).   The entire integrated system
-is shown below. 
+is shown below.
 
 ![diagram of camera head, gimble, and Novatel IMU](images/CLIF_Camera_Head_IMU.png "diagram of camera head, gimble, and Novatel IMU")
 
@@ -55,83 +51,74 @@ figure below.
 
 ## CLIF 2007 Data Products
 
-Four data products are available with the CLIF data set raw, NITF, 
-truth/labels, and position data. Raw or unprocessed data is available 
-for the CLIF 2007 data set and is described in the section below.  Raw data
-requires a high level of expertise in remote sensing to be able to process 
-in a meaningful way.  For some research like super resolution and 3D 
+Four data products are available with the CLIF data set raw, NITF,
+truth/labels, and position data. Raw or unprocessed data is available
+for the CLIF 2007 data set and is described in the sections below.  Raw data
+requires a high level of expertise in remote sensing to be able to process
+in a meaningful way.  For some research like super resolution and 3D
 reconstruction, raw data is required. In addition we have provided processed
-data in the DoD's NITF file standard which is described below.  NITF data is 
+data in the DoD's NITF file standard which is described below.  NITF data is
 stitched, orthorectified (north orienterd), and scaled for display to the user.
 NITF data could be used in conjuction with the truth/labels for interesting
-image classification and tracking problems.  
+image classification and tracking problems.
 
 ### Raw Image Data
 
-The CLIF 2007 data set includes "raw" data which is image data that is unprocessed 
-for each of the six cameras.  Each raw image is 4,016 pixels by 2,672 pixels, in 
-8-bits per pixel grayscale raw format with an approximate size of 11 megabytes 
+The CLIF 2007 data set includes "raw" data which is image data that is unprocessed
+for each of the six cameras.  Each raw image is 4,016 pixels by 2,672 pixels, in
+8-bits per pixel grayscale raw format with an approximate size of 11 megabytes
 for each camera.
 
 #### Raw File Naming Convention
 
-The first six characters in the file name denote the camera number while the 
-last eight characters represent the flight number (first two digits) and the 
+The first six characters in the file name denote the camera number while the
+last eight characters represent the flight number (first two digits) and the
 frame number (last six digits).  Both the camera number and the frame number
-are padded with zeros at the front to insure the file names are automatically 
-sorted correctly when listing a directory. A example file name is 
-000003-01001000.raw, where 000003 is camera number three, 01 is flight number 
-one, and 001000 is frame number one thousand.   
+are padded with zeros at the front to insure the file names are automatically
+sorted correctly when listing a directory. A example file name is
+000003-01001000.raw, where 000003 is camera number three, 01 is flight number
+one, and 001000 is frame number one thousand.
 
 #### Raw Image Storage
 
-The raw images are stored in standard "gzip tarballs" in Amazon S3 requester pay
-buckets at s3://sdms-clif-2007/ with the following file names:
-
-* Camera_0.tar.gz
-* Fix_Camera_1.tar.gz
-* Fix_Camera_2.tar.gz
-* Fix_Camera_3.tar.gz
-* Fix_Camera_4.tar.gz
-* Fix_Camera_5.tar.gz
-
-See the [bulk data access section](#bulk_data_access) at the end of mark down file for
-instructions on how to download the raw imagery. 
+The raw images are stored in standard "tarballs" in Amazon S3 requester pay
+buckets at s3://sdms-clif-2007/raw_sensor_data with the following file name
+convention Camera_X_00000Y.tar where X is the camera number and y is the
+tarball file index. See the [bulk data access section](#bulk_data_access) at
+the end of mark down file for instructions on how to download the raw imagery.
 
 ### NITF Data
 
 [National Image Transmission Format (NITF)](https://en.m.wikipedia.org/wiki/National_Imagery_Transmission_Format)
-is the DoD standard for imagery. Bascially a NITF file is a large 
-header with the data concatenated onto the rear of the file.  The data 
-or image  is stored in blocks of jpeg 6.2 compressed images of 128 x 128 size. The 
-easiest way to read NITF data is to use [Geospatial Data Abstraction Layer (GDAL)](https://en.m.wikipedia.org/wiki/GDAL). Example 
+is the DoD standard for imagery. Bascially a NITF file is a large
+header with the data concatenated onto the rear of the file.  The data
+or image  is stored in blocks of jpeg 6.2 compressed images of 128 x 128 size. The
+easiest way to read NITF data is to use [Geospatial Data Abstraction Layer (GDAL)](https://en.m.wikipedia.org/wiki/GDAL). Example
 Python code is provided [code/NITFPythonGDAL.py](code/NITFPythonGDAL.py) that will
 read the NITF file then plot the image in a matplotlib plot.
 
 #### NITF File Naming Convention
 
 The NITF files are named as "YYYYMMDDHHMMSS-FNXXXXXX-VIS.ntf.r0", where FN is the
-flight number and XXXXXX is the frame number, an example file name is 
-"20071028142730-01000324-VIS.ntf.r0". On close inspection of the NITF data you 
-will notice that each of the NITF files have six correpsonding files each with 
-r0, r1, r2, r3, r4, and r5.  Those files represent the resolution set also 
-known as the r set.  The highest resolution is r0 while the lowest resolution is r5.  
+flight number and XXXXXX is the frame number, an example file name is
+"20071028142730-01000324-VIS.ntf.r0". On close inspection of the NITF data you
+will notice that each of the NITF files have six correpsonding files each with
+r0, r1, r2, r3, r4, and r5.  Those files represent the resolution set also
+known as the r set.  The highest resolution is r0 while the lowest resolution is r5.
 
 #### NITF Storage
 
-<!-- Provide a index of files to tarballs, need to wait until JP fixes permissions -->
-
 The NITF files are stored in standard "tarballs" in Amazon S3 requester pay
-buckets at s3://sdms-clif-2007/ with the file names that start with NITFS_14_*.tar.
+buckets at s3://sdms-clif-2007/NITF with the file names that start with NITFS_14_*.tar.
 See the [bulk data access section](#bulk_data_access) at the end of mark down file
 for instructions on how to download the NITF imagery.
 
 ### Truth/Labels/Tracks
 
-A variety of objects in the scene were tracked and truthed (or labeled) by humans. 
-These labels are provided in the data set and stored in 
+A variety of objects in the scene were tracked and truthed (or labeled) by humans.
+These labels are provided in the data set and stored in
 s3://sdms-clif-2007/20071028_CLIF_Truth.tar.gz. The truth data was generated with AFRL
-Sensor Directorate's WAMITT tool and is provided in a MySQL dump text file.  
+Sensor Directorate's WAMITT tool and is provided in a MySQL dump text file.
 The relational database structure is shown in [WAMITT relational DB design](images/wamittEr_v2.png).
 Truth or labels were derived from the NITF files.
 
@@ -153,13 +140,13 @@ An example command to convert the WAMITT tracks is:
 #### CSV file of the labels
 
 In addition to the MySQL data dump file we have taken the liberty to
-convert the file into a single comma separated value (CSV) file to ease 
-processing of the truth file. The CSV file is stored here 
-s3://sdms-clif-2007/2007_CLIF_truth_csv.zip.  The 
+convert the file into a single comma separated value (CSV) file to ease
+processing of the truth file. The CSV file is stored here
+s3://sdms-clif-2007/2007_CLIF_truth_csv.zip.  The
 script [code/convert_sqlite3_to_csv.py](code/convert_sqlite3_to_csv.py) was used
-to convert the SQLite3 database to CSV.  It is an easily modifiable script in 
-case your research requires additional fields. The CSV file includes the field 
-names on the first line of the file.  A snippet of the CSV file is included 
+to convert the SQLite3 database to CSV.  It is an easily modifiable script in
+case your research requires additional fields. The CSV file includes the field
+names on the first line of the file.  A snippet of the CSV file is included
 below:
 
 ```bash
@@ -171,7 +158,7 @@ NITFVIS2007102814250401000102,1193581504083,102,54955,50539099,pickup truck,gray
 
 #### Truth/Label Statistics
 
-The Python code [code/truth_stats.py](code/truth_stats.py) was used to generate the statistics for 
+The Python code [code/truth_stats.py](code/truth_stats.py) was used to generate the statistics for
 the truth/label data below.
 
 * Total count of images with at least one truth object: 6,343
@@ -202,7 +189,7 @@ the truth/label data below.
       * utility pole: 33
       * van: 81,331
       * van w/trailer: 234
-    
+
 
 ### Position Data
 
@@ -222,9 +209,9 @@ variables you can use the C scanf function like the following, note the
 variable types:
 
 ```bash
-sscanf(0, "%lf,%lf,%lf,%lf,%lf,%lf,%lf,%d,%lf,%lf,%lf,%d,%d,%d", &yaw, &pitch, 
+sscanf(0, "%lf,%lf,%lf,%lf,%lf,%lf,%lf,%d,%lf,%lf,%lf,%d,%d,%d", &yaw, &pitch,
   &roll, &latitude, &longitude, &altitude, &gps_seconds, &gps_week,
-  &north_velocity, &east_velocity, &up_velocity, &imu_status, 
+  &north_velocity, &east_velocity, &up_velocity, &imu_status,
   &local_time_zone_adjustment, &day_light_savings_flag );
 ```
 
@@ -233,37 +220,37 @@ sscanf(0, "%lf,%lf,%lf,%lf,%lf,%lf,%lf,%d,%lf,%lf,%lf,%d,%d,%d", &yaw, &pitch,
   <tr>
     <td><b>Name</b></td>
     <td><b>Type</b></td>
-    <td><b>Notes</b></td>      
+    <td><b>Notes</b></td>
   </tr>
   <tr>
     <td>yaw</td>
-    <td>double</td>   
-    <td>0 to 359.9 in the units of degrees, see the graphs above to understand the rotation and placement of IMU. Often referred to as azimuth. Around the Z axis.      
+    <td>double</td>
+    <td>0 to 359.9 in the units of degrees, see the graphs above to understand the rotation and placement of IMU. Often referred to as azimuth. Around the Z axis.
   </tr>
   <tr>
     <td>pitch</td>
-    <td>double</td>   
+    <td>double</td>
     <td>-180 to +180 in the units of degrees, see the graphs above to understand the rotation and placement of IMU.  Around the X axis.
   </tr>
   <tr>
     <td>roll</td>
-    <td>double</td>   
+    <td>double</td>
     <td>-180 to +180 in the units of degrees, see the graphs above to understand the rotation and placement of IMU. Around the Y axis.
   </tr>
   <tr>
     <td>latitude</td>
-    <td>double</td>     
-    <td>decimal degrees (WGS84)</td>   
+    <td>double</td>
+    <td>decimal degrees (WGS84)</td>
   </tr>
   <tr>
     <td>longitude</td>
     <td>double</td>
-    <td>decimal degrees (WGS84)</td>    
+    <td>decimal degrees (WGS84)</td>
   </tr>
   <tr>
     <td>altitude</td>
-    <td>double</td>    
-    <td>Altitude from the IMU, ellipsoidal height (WGS84) in feet</td>    
+    <td>double</td>
+    <td>Altitude from the IMU, ellipsoidal height (WGS84) in feet</td>
   </tr>
   <tr>
     <td>gps_seconds</td>
@@ -272,46 +259,45 @@ sscanf(0, "%lf,%lf,%lf,%lf,%lf,%lf,%lf,%d,%lf,%lf,%lf,%d,%d,%d", &yaw, &pitch,
   </tr>
   <tr>
     <td>gps_week</td>
-    <td>integer</td>       
+    <td>integer</td>
     <td>Computed as the full week number starting from week 0 or January 6, 1980. Referenced to UTC.</td>
   </tr>
   <tr>
     <td>north_velocity</td>
-    <td>double</td>        
+    <td>double</td>
     <td>Velocity in a northerly direction (a negative value implies a southerly direction) meters per second</td>
   </tr>
   <tr>
     <td>east_velocity</td>
-    <td>double</td>        
-    <td>Velocity in a easterly direction (a negative value implies a westerly direction) meters per second</td>    
+    <td>double</td>
+    <td>Velocity in a easterly direction (a negative value implies a westerly direction) meters per second</td>
   </tr>
   <tr>
     <td>up_velocity</td>
-    <td>double</td>        
-    <td>Velocity in an up direction meters per second</td>    
+    <td>double</td>
+    <td>Velocity in an up direction meters per second</td>
   </tr>
   <tr>
     <td>imu_status</td>
-    <td>integer</td>  
-    <td>Status of the IMU. 0 - GPS Locked, 1 - Insufficient Observations, 2 - No Convergence, 3 - Singularity, 4 - Covariance Trace, 14 - INS Inactive, 15 - INS Aligning, 16 - INS Bad, 17 - IMU Unplugged</td>      
+    <td>integer</td>
+    <td>Status of the IMU. 0 - GPS Locked, 1 - Insufficient Observations, 2 - No Convergence, 3 - Singularity, 4 - Covariance Trace, 14 - INS Inactive, 15 - INS Aligning, 16 - INS Bad, 17 - IMU Unplugged</td>
   </tr>
   <tr>
     <td>local_time_zone_adjustment</td>
     <td>integer</td>
-    <td>Time offset between GMT and local time.  To determine the local time of the frame, simply add the local_time_zone_adjustment offset to the time value calculated with gps_seconds and gps_week</td>  
+    <td>Time offset between GMT and local time.  To determine the local time of the frame, simply add the local_time_zone_adjustment offset to the time value calculated with gps_seconds and gps_week</td>
   </tr>
   <tr>
     <td>day_light_savings_flag</td>
     <td>integer</td>
-    <td>Indicates if daylight savings time was in effect.  0 - No or unknown, 1 - Yes</td>      
+    <td>Indicates if daylight savings time was in effect.  0 - No or unknown, 1 - Yes</td>
   </tr>
-</table> 
+</table>
 </p>
 
-C code is available from [code/convert_gps_time.c](code/convert_gps_time.c) to 
-convert the GPS Week and GPS time into year, month, day_of_month, hour, minute, 
+C code is available from [code/convert_gps_time.c](code/convert_gps_time.c) to
+convert the GPS Week and GPS time into year, month, day_of_month, hour, minute,
 and second.
-
 
 
 ## Suggested Challenge Problems
@@ -322,21 +308,19 @@ The AFRL/Sensors Directorate is interested in novel research using this dataset,
 * GEOREGISTRATION-providing UTM coordinates for every pixel
 * GIS FUSION-fusing the data with GIS information
 * LAYERED REGISTRATION-Registering (Data Fusion Level 0) of the aerial and building sensor data
-* TRACKING-Tracking vehicles  
+* TRACKING-Tracking vehicles
 * ATR-Performing Automatic Target Recognition (ATR) on objects of interest
-   
 
 ## <a name="bulk_data_access"></a> Bulk Data Access - Amazon S3
 <!-- This section is based on http://arxiv.org/help/bulk_data_s3 -->
 
-
 The CLIF 2007 data is available from Amazon
 Simple Storage Service (S3) in Requester Pays buckets (i.e., you are charged
-by Amazon to access, browse, and download this data). Please see 
-<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html">Requester Pays Buckets</a> in the <a href="http://docs.amazonwebservices.com/AmazonS3/latest/dev/">Amazon S3 Guide</a> for 
-more information on this service. Your use of Amazon S3 is subject to Amazon's 
-Terms of Use. The accessibility of SDMS data from Amazon S3 is provided "as is" 
-without warranty of any kind, expressed or implied, including, but not limited 
+by Amazon to access, browse, and download this data). Please see
+<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html">Requester Pays Buckets</a> in the <a href="http://docs.amazonwebservices.com/AmazonS3/latest/dev/">Amazon S3 Guide</a> for
+more information on this service. Your use of Amazon S3 is subject to Amazon's
+Terms of Use. The accessibility of SDMS data from Amazon S3 is provided "as is"
+without warranty of any kind, expressed or implied, including, but not limited
 to, the implied warranties of merchantability and fitness for a particular use.
 Please do not contact SDMS for assistance with Amazon services, you can post
 a GitHub issue and the authors will try and assist.
@@ -345,12 +329,12 @@ The name of the S3 bucket is sdms-clif-2007 (s3://sdms-clif-2007).
 
 ### Tools
 
-<p>We do not track development of tools interacting with Amazon S3, nor endorse any
+We do not track development of tools interacting with Amazon S3, nor endorse any
 particular tool.  However, in development of this facility we found the Python
-package <a href="http://s3tools.org/s3cmd">s3cmd</a> to be useful on Mac OS X 
-and Linux.  For Windows the AWS team provided the following suggestions 
+package <a href="http://s3tools.org/s3cmd">s3cmd</a> to be useful on Mac OS X
+and Linux.  For Windows the AWS team provided the following suggestions
 <a href="http://s3browser.com/requester-pays-buckets.php">s3browser.com</a> and
-<a href="http://www.crossftp.com/amazon-s3-client.htm">cross ftp</a>. </p>
+<a href="http://www.crossftp.com/amazon-s3-client.htm">cross ftp</a>.
 
 ### s3cmd Example
 
@@ -395,7 +379,7 @@ s3cmd --requester-pays get s3://sdms-clif-2007/position_text.tar.gz
 ```
 
 We do not recommend that you use s3cmd sync capability because the number of
-files and size of the MAMI data set is large and errors will result. 
+files and size of the MAMI data set is large and errors will result.
 
 ### Optimizing Data Download Costs
 
@@ -414,22 +398,22 @@ more tarball files that would have to be created.
 
 ## Updates
 
-Please feel free to create a pull request or new issue if you write a paper 
-that uses this data set so we can update the bibliography.  In addition we will 
+Please feel free to create a pull request or new issue if you write a paper
+that uses this data set so we can update the bibliography.  In addition we will
 gladly accept pull requests and new issues for corrections or bug fixes.
 
 ## Acknowledgments
 
-Todd Rovito and Olga Mendoza-Schrock were supported under an AFOSR grant in 
+Todd Rovito and Olga Mendoza-Schrock were supported under an AFOSR grant in
 [Dynamic Data Driven Application Systems](http://www.1dddas.org).
-	
+
 ## Citation
 
 When reporting results that use the CLIF 2007 dataset, please cite:
 
-Todd Rovito<sup>1</sup>, James Patrick<sup>1</sup>, Steve Walls<sup>2</sup>, 
-Daniel Uppenkamp<sup>1</sup>, Olga Mendoza-Schrock<sup>1</sup>, Vince Velten<sup>1</sup>, 
-Chris Curtis<sup>1</sup>, and Kevin Priddy<sup>1</sup>. Columbus Large Image Format (CLIF) 
+Todd Rovito<sup>1</sup>, James Patrick<sup>1</sup>, Steve Walls<sup>2</sup>,
+Daniel Uppenkamp<sup>1</sup>, Olga Mendoza-Schrock<sup>1</sup>, Vince Velten<sup>1</sup>,
+Chris Curtis<sup>1</sup>, and Kevin Priddy<sup>1</sup>. Columbus Large Image Format (CLIF)
 2007 Dataset. https://github.com/AFRL-RY/data-clif-2007, 2018.
 
 1. AFRL/Sensors Directorate/RYA 2241 Avionics Circle, Wright-Patterson AFB, OH 45433
@@ -438,7 +422,7 @@ Chris Curtis<sup>1</sup>, and Kevin Priddy<sup>1</sup>. Columbus Large Image For
 ## Copyright information
 
 This page and data set is in the public domain under [17 U.S.C. 105](https://www.law.cornell.edu/uscode/text/17/105).
-	
+
 ## Bibliography
 <ol>
 <li>Haibin Ling, Yi Wu, Erik Blasch, Genshe Chen, Haitao Lang, and Li Bai. Evaluation of visual tracking in extremely low frame rate wide area motion imagery. In Information Fusion (FUSION), 2011 Proceedings of the 14th International Conference on, 1–8. IEEE, 2011.</li>
@@ -504,5 +488,4 @@ This page and data set is in the public domain under [17 U.S.C. 105](https://www
 <li>Randy Milbert, David Hemphill, Justin Benjamin, and Andreas Robinson. Tentacle multi-camera immersive surveillance system phase 2. Technical Report, DTIC Document, 2015.</li>
 
 </ol>
-                
-       
+
