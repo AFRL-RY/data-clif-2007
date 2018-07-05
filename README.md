@@ -58,7 +58,7 @@ requires a high level of expertise in remote sensing to be able to process
 in a meaningful way.  For some research like super resolution and 3D
 reconstruction, raw data is required. In addition we have provided processed
 data in the DoD's NITF file standard which is described below.  NITF data is
-stitched, orthorectified (north orienterd), and scaled for display to the user.
+stitched, orthorectified (north oriented), and scaled for display to the user.
 NITF data could be used in conjuction with the truth/labels for interesting
 image classification and tracking problems.
 
