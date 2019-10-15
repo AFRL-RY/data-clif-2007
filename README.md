@@ -1,5 +1,25 @@
 # Columbus Large Image Format (CLIF) 2007 Dataset Overview
 
+-   [Overview](#overview)
+-   [Airborne Sensor Hardware](#airborne-sensor-hardware)
+-   [CLIF 2007 Data Products](#clif-2007-data-products)
+    -   [Raw Image Data](#raw-image-data)
+    -   [NITF Data](#nitf-data)
+    -   [Truth/Labels/Tracks](#truthlabelstracks)
+    -   [Position Data](#position-data)
+-   [Suggested Challenge Problems](#suggested-challenge-problems)
+-   [<a name="bulk_data_access"></a> Bulk Data Access - Amazon
+    S3](#bulk-data-access---amazon-s3)
+    -   [Tools](#tools)
+    -   [s3cmd Example](#s3cmd-example)
+    -   [Optimizing Data Download
+        Costs](#optimizing-data-download-costs)
+-   [Updates](#updates)
+-   [Acknowledgments](#acknowledgments)
+-   [Citation](#citation)
+-   [Copyright information](#copyright-information)
+-   [Bibliography](#bibliography)
+
 ## Overview
 
 The CLIF dataset contains several hours of imagery from a large format EO
@@ -488,4 +508,3 @@ This page and data set is in the public domain under [17 U.S.C. 105](https://www
 <li>Randy Milbert, David Hemphill, Justin Benjamin, and Andreas Robinson. Tentacle multi-camera immersive surveillance system phase 2. Technical Report, DTIC Document, 2015.</li>
 
 </ol>
-
