@@ -36,7 +36,7 @@ template:
 
 ### Documentation Styleguide
 
-- Use [GitLab Markdown](https://docs.gitlab.com/ee/user/markdown.html)
+- Use [GitHub Markdown](https://help.github.com/en/categories/writing-on-github)
 - Documentation has a column limit of 80 characters (some exceptions include 
   tables, URLs, code excerpts)
 - Use space characters for indentation (do not use tab characters)
